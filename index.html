@@ -1,0 +1,420 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my-startup - Turn Your Hobbies into Businesses with AI</title>
+    <meta name="description" content="my-startup is an AI-powered platform that helps students transform their hobbies into profitable online businesses. Get personalized ideas, launch plans, and ready-made marketing tools.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6B46C1; /* A vibrant purple */
+            --secondary-color: #805AD5; /* Lighter purple */
+            --accent-color: #D6BCFA; /* Even lighter purple */
+            --text-color: #2D3748; /* Dark grey */
+            --light-text-color: #4A5568; /* Medium grey */
+            --background-color: #F7FAFC; /* Light grey background */
+            --white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--white);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--shadow-light);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-item a {
+            color: var(--light-text-color);
+            font-weight: 600;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .nav-item a:hover {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background-image: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .hero .btn {
+            font-size: 1.25rem;
+            padding: 1rem 2.5rem;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .section-light {
+            background-color: var(--white);
+        }
+
+        .section-dark {
+            background-color: var(--background-color);
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .section p.subtitle {
+            font-size: 1.25rem;
+            color: var(--light-text-color);
+            max-width: 700px;
+            margin: 0 auto 3rem auto;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: 0.5rem;
+            box-shadow: var(--shadow-light);
+            text-align: left;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            border: 1px solid var(--border-color);
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .feature-item h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-item p {
+            color: var(--light-text-color);
+            font-size: 1rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 5rem 0;
+            text-align: center;
+            background-image: linear-gradient(45deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--text-color);
+            color: var(--white);
+            padding: 3rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-nav-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-nav-list a {
+            color: var(--accent-color);
+            transition: color 0.2s ease-in-out;
+        }
+
+        .footer-nav-list a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-list {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .section p.subtitle {
+                font-size: 1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .cta-section p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">my-startup</a>
+            <nav>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html">Home</a></li>
+                    <li class="nav-item"><a href="about.html">About</a></li>
+                    <li class="nav-item"><a href="pricing.html">Pricing</a></li>
+                    <li class="nav-item"><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="btn btn-primary">Get Started Free</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Turn Your Passion into Profit with AI.</h1>
+                <p>my-startup empowers students to transform their hobbies into thriving online businesses with personalized ideas, step-by-step launch plans, and ready-made marketing tools.</p>
+                <a href="#" class="btn btn-secondary">Launch Your Dream Business</a>
+            </div>
+        </section>
+
+        <section class="section section-light">
+            <div class="container">
+                <h2>Unlock Your Entrepreneurial Potential</h2>
+                <p class="subtitle">Are you a student with a hobby, but unsure how to turn it into a profitable venture? my-startup provides the guidance and tools you need to succeed.</p>
+
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h3>Personalized Business Ideas</h3>
+                        <p>Our AI analyzes your unique skills and interests to suggest profitable online business ideas tailored just for you. No more guessing, just smart suggestions.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Step-by-Step Launch Plans</h3>
+                        <p>Get a comprehensive, actionable plan that guides you from idea validation to execution. We break down the complex process into simple, manageable steps.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Ready-Made Marketing Tools</h3>
+                        <p>Instantly generate professional landing pages and compelling pitch decks. Launch your business quickly and confidently, even with no design or marketing experience.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Strategic Marketing Guidance</h3>
+                        <p>Access proven marketing strategies designed to help you reach your target audience, build your brand, and grow your customer base effectively.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-dark">
+            <div class="container">
+                <h2>Why Choose my-startup?</h2>
+                <p class="subtitle">We bridge the gap between your passion and market demand, offering a unique, all-in-one solution for aspiring student entrepreneurs.</p>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h3>AI-Powered Precision</h3>
+                        <p>Leverage cutting-edge AI to identify market gaps and personalize business opportunities, ensuring your venture has the best chance of success.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Speed & Simplicity</h3>
+                        <p>From idea generation to launch, our platform streamlines every step, allowing you to get your business off the ground faster than ever before.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Comprehensive Support</h3>
+                        <p>Beyond ideas, we provide the essential marketing materials and strategic insights needed to not just start, but truly thrive in the online marketplace.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to Build Your Future?</h2>
+                <p>Join thousands of students who are turning their passions into profitable online businesses with my-startup. Your entrepreneurial journey starts here.</p>
+                <a href="#" class="btn btn-primary">Start Your Business Journey Today</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2024 my-startup. All rights reserved.</p>
+            <ul class="footer-nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
+```
